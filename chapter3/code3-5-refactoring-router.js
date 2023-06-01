@@ -1,7 +1,7 @@
 const http = require("http");
 const url = require("url");
 
-http
+/* http
   .createServer((req, res) => {
     const path = url.parse(req.url, true).pathname;
     res.setHeader("Content-Type", "text/html");
@@ -12,7 +12,19 @@ http
       notFound(req, res);
     }
   })
-  .listen("3000", () => console.log("라우터를 리팩토링해보자!"));
+  .listen("3000", () => console.log("라우터를 리팩토링해보자!")); */
+
+http
+  .createServer((req, res) => {
+    const path = url.parse(req.url, true).pathname;
+    res.setHeader("Content-Type", "text/html");
+    if (path in urlMap) {
+      urlMap[path](req, res);
+    } else {
+      notFound(req, res);
+    }
+  })
+  .listen("3000", () => console.log("라우터 리팩터링!"));
 
 const user = (req, res) => {
   const user = url.parse(req.url, true).query;
@@ -33,9 +45,16 @@ const notFound = (req, res) => {
   res.end("404 page not found");
 };
 
-// 3
 const urlMap = {
   "/": (req, res) => res.end("HOME"),
   "/user": user,
   "/feed": feed,
 };
+
+// 3
+/* const urlMap = {
+  "/": (req, res) => res.end("HOME"),
+  "/user": user,
+  "/feed": feed,
+};
+ */
