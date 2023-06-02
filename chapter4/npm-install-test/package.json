@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "lodash": "github:lodash/lodash#4.17.21"
+    "lodash": ">=4.17.0 <4.20.0"
   },
   "devDependencies": {
     "jest": "^29.3.1"
