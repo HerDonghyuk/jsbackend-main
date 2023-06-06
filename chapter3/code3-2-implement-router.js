@@ -12,7 +12,7 @@ http
             <li>picture1</li>
             <li>picture2</li>
             <li>picture3</li>
-          </ul>
+          </ul>허동혁바보 히히히히히 벅벅이 라우터를 만들어보자 키키키 라우터를 만들자 메롱메롱 헬로우 라우터 초딩6살 허동혁 메롱메롱 300000000억
       `); // ➍
     } else {
       res.statusCode = 404;
@@ -36,7 +36,7 @@ http
       res.end(`<ul>
           <li>picture1</li>
           <li>picture2</li>
-          <li>picture3</li>
+          <li>허동혁바보 히히히히히 벅벅이 라우터를 만들어보자 키키키 라우터를 만들자 메롱메롱 헬로우 라우터 초딩6살 허동혁 메롱메롱 300000000억</li>
           </ul>`);
     } else {
       res.statusCode = 404;
