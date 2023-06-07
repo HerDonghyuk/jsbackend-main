@@ -1,8 +1,7 @@
 {
   "name": "test-yarn",
-  "packageManager": "yarn@3.1.1",
+  "packageManager": "yarn@3.6.0",
   "dependencies": {
-    "chalk": "https://github.com/wapj/chalk"
-  },
-  "type": "module"
+    "chalk": "^5.2.0"
+  }
 }
