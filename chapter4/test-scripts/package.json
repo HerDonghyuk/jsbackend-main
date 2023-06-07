@@ -2,6 +2,6 @@
   "name": "test-scripts",
   "version": "1.0.0",
   "scripts": {
-    "hello": "echo 'hello Node.js'"
+    "hello": "echo 'hello Node111.js'"
   }
 }
