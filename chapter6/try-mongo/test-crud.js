@@ -1,4 +1,4 @@
-const MongoClient = require('mongodb').MongoClient;
+/* const MongoClient = require('mongodb').MongoClient;
 
 // Replace <password> with your MongoDB Atlas password, and <clusterinfo> with the information about your cluster
 const url = 'mongodb+srv://mymongo:test1234@cluster0.c4xru.mongodb.net/test?retryWrites=true&w=majority';
@@ -38,6 +38,42 @@ async function main() {
     console.log('document 삭제');
 
     // 연결 끊기 
+    await client.close();
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+main();
+ */
+
+const MongoClient = require("mongodb").MongoClient;
+
+const url =
+  "mongodb+srv://idnosukja:ahdrhelql@cluster0.x9p1mqj.mongodb.net/test?retryWrites=true&w=majority";
+
+const client = new MongoClient(url, { useNewUrlParser: true });
+
+async function main() {
+  try {
+    await client.connect();
+
+    console.log("MongoDB 접속 성공");
+
+    const collection = client.db("test").collection("person");
+
+    await collection.insertOne({ name: "Andy", age: 30 });
+    console.log("문서 추가 완료");
+
+    const documents = await collection.find({ name: "Andy" }).toArray();
+    console.log("찾은 문서: ", documents);
+
+    await collection.updateOne({ name: "Andy" }, { $set: { age: 31 } });
+    console.log("문서 업데이트");
+
+    const updatedDocuments = await collection.find({ name: "Andy" }).toArray();
+    console.log("갱신된 문서: ", updatedDocuments);
+
     await client.close();
   } catch (err) {
     console.error(err);
