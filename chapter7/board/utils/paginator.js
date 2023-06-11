@@ -1,3 +1,4 @@
+/* 
 const lodash = require("lodash"); // ❶
 const PAGE_LIST_SIZE = 10; // ❷
 
@@ -37,3 +38,4 @@ module.exports = ({ totalCount, page, perPage = 10 }) => {
   };
   return paginator;
 };
+ */

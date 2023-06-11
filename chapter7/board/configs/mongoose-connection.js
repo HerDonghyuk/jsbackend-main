@@ -1,3 +1,4 @@
+/* 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const uri =
@@ -6,3 +7,4 @@ const uri =
 module.exports = function () {
   return mongoose.connect(uri, { useNewUrlParser: true });
 };
+ */

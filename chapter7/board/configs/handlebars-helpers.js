@@ -1,3 +1,4 @@
+/* 
 module.exports = {
   // ❶ 리스트 길이를 반환
   lengthOfList: (list = []) => list.length,
@@ -6,3 +7,5 @@ module.exports = {
   // ❸ ISO 날짜 문자열에서 날짜만 반환
   dateString: (isoString) => new Date(isoString).toLocaleDateString(),
 };
+
+ */

@@ -1,3 +1,4 @@
+/* 
 const paginator = require("../utils/paginator");
 const { ObjectId } = require("mongodb");
 
@@ -68,3 +69,4 @@ module.exports = {
   getPostByIdAndPassword,
   updatePost,
 };
+ */
