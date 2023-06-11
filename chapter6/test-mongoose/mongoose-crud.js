@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.listen(3000, () => {
   console.log("Server started");
   const mongodbUri =
-    "mongodb+srv://mymongo:test1234@cluster0.c4xru.mongodb.net/test?retryWrites=true&w=majority";
+    "mongodb+srv://idnosukja:ahdrhelql@cluster0.x9p1mqj.mongodb.net/test?retryWrites=true&w=majority";
   mongoose
     .connect(mongodbUri, { useNewUrlParser: true })
     .then(console.log("Connected to MongoDB"));
