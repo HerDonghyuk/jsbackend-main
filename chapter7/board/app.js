@@ -183,11 +183,9 @@ const mongodbConnection = require("./configs/mongodb-connection");
 
 app.engine(
   "handlebars",
-  handlebars
-    .create({
-      helpers: require("./configs/handlebars-helpers"),
-    })
-    .engine()
+  handlebars.create({
+    helpers: require("./configs/handlebars-helpers"),
+  }).engine
 );
 app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
@@ -198,6 +196,12 @@ app.get("/", (req, res) => {
 
 app.get("/write", (req, res) => {
   res.render("write", { title: "텍스트 게시판" });
+});
+
+app.get("/detail/:id", async (req, res) => {
+  res.render("detail", {
+    title: "테스트 게시판",
+  });
 });
 
 let collection;
