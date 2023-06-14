@@ -180,6 +180,7 @@ const express = require("express");
 const handlebars = require("express-handlebars");
 const mongodbConnection = require("./configs/mongodb-connection");
 const postService = require("./services/post-service");
+const { ObjectId } = require("mongodb");
 
 const app = express();
 app.use(express.json());
@@ -256,6 +257,24 @@ app.post("/modify/", async (req, res) => {
   };
   const result = postService.updatePost(collection, id, post);
   res.redirect(`/detail/${id}`);
+});
+
+app.delete("/delete", async (req, res) => {
+  const { id, password } = req.body;
+  try {
+    const result = await collection.deleteOne({
+      _id: ObjectId(id),
+      password: password,
+    });
+    if (result.deletedCount !== 1) {
+      console.log("삭제 실패");
+      return res.json({ isSuccess: false });
+    }
+    return res.json({ isSuccess: true });
+  } catch (error) {
+    console.error(error);
+    return res.json({ isSuccess: false });
+  }
 });
 
 let collection;
