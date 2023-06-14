@@ -226,7 +226,7 @@ app.get("/detail/:id", async (req, res) => {
 
 app.post("/check-password", async (req, res) => {
   const { id, password } = req.body;
-  const post = await postService.getPostByIdAndPassword(collection, {
+  const post = postService.getPostByIdAndPassword(collection, {
     id,
     password,
   });
