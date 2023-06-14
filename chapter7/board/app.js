@@ -224,10 +224,44 @@ app.get("/detail/:id", async (req, res) => {
   });
 });
 
+app.post("/check-password", async (req, res) => {
+  const { id, password } = req.body;
+  const post = await postService.getPostByIdAndPassword(collection, {
+    id,
+    password,
+  });
+  if (!post) {
+    return res.status(404).json({ isExist: false });
+  } else {
+    return res.json({ isExist: true });
+  }
+});
+
 let collection;
 app.listen(3000, async () => {
   console.log("Server started");
   const mongoClient = await mongodbConnection();
   collection = mongoClient.db().collection("post");
   console.log("MongoDB connected");
+});
+
+app.get("/modify/:id", async (req, res) => {
+  const { id } = req.params.id;
+  const post = await postService.getPostById(collection, req.params.id);
+  console.log(post);
+  res.render("write", { title: "테스트 게시판 ", mode: "modify", post });
+});
+
+app.post("/modify/", async (req, res) => {
+  const { id, title, writer, password, content } = req.body;
+
+  const post = {
+    title,
+    writer,
+    password,
+    content,
+    createDt: new Date().toISOString(),
+  };
+  const result = postService.updatePost(collection, id, post);
+  res.redirect(`/detail/${id}`);
 });
