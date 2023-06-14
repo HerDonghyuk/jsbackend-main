@@ -226,7 +226,7 @@ app.get("/detail/:id", async (req, res) => {
 
 app.post("/check-password", async (req, res) => {
   const { id, password } = req.body;
-  const post = postService.getPostByIdAndPassword(collection, {
+  const post = await postService.getPostByIdAndPassword(collection, {
     id,
     password,
   });
@@ -235,14 +235,6 @@ app.post("/check-password", async (req, res) => {
   } else {
     return res.json({ isExist: true });
   }
-});
-
-let collection;
-app.listen(3000, async () => {
-  console.log("Server started");
-  const mongoClient = await mongodbConnection();
-  collection = mongoClient.db().collection("post");
-  console.log("MongoDB connected");
 });
 
 app.get("/modify/:id", async (req, res) => {
@@ -264,4 +256,12 @@ app.post("/modify/", async (req, res) => {
   };
   const result = postService.updatePost(collection, id, post);
   res.redirect(`/detail/${id}`);
+});
+
+let collection;
+app.listen(3000, async () => {
+  console.log("Server started");
+  const mongoClient = await mongodbConnection();
+  collection = mongoClient.db().collection("post");
+  console.log("MongoDB connected");
 });
