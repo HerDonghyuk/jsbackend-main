@@ -24,7 +24,7 @@
     </div>
 
     <form method="post" action="/write-comment">
-      <input type="hidden" name="id" value="{{_id}}">
+      <input type="hidden" name="id" value="{{_id}}" />
       <div>
         <div>
           <input type="text" name="name" placeholder="이름" />
@@ -45,18 +45,20 @@
 
   <section>
     {{#each comments}}
-    <div>
       <div>
-        작성자 : <b>{{name}}</b>
+        <div>
+          작성자 :
+          <b>{{name}}</b>
+        </div>
+        <div>
+          작성일시 :
+          {{dateString createdDt}}
+          <button onclick="deleteComment('{{idx}}')">삭제</button>
+        </div>
+        <div>
+          <pre>{{comment}}</pre>
+        </div>
       </div>
-      <div>
-        작성일시 : {{dateString createdDt}}
-        <button onclick="deleteComment('{{idx}}')">삭제</button>
-      </div>
-      <div>
-        <pre>{{comment}}</pre>
-      </div>
-    </div>
     {{/each}}
   </section>
 {{/with}}
@@ -122,4 +124,24 @@
     document.location = "/";
   }
 
+  async function deleteComment(idx) {
+    const password = prompt("삭제하려면 패스워드를 입력해주세요");
+    if (!password) {
+      return;
+    }
+
+    const result = await fetch("/delete-comment", {
+      ...deleteOption,
+      body: JSON.stringify({ id: "{{post._id}}", idx, password} )
+    });
+
+    const data = await result.json();
+    if (!data.isSuccess) {
+      alert("삭제에 실패했습니다. 패스워드를 확인해주세요.");
+      return;
+    }
+
+    alert("삭제 성공!");
+    document.location.reload();
+  }
 </script>
