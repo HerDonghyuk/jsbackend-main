@@ -2,11 +2,23 @@ const express = require("express");
 const handlebars = require("express-handlebars");
 const app = express();
 
-/* const mongodbConnection = require("./configs/mongodb-connection"); */
+/* app.use(express.json());
+app.use(express.urlencoded({ extended: true })); */
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const mongodbConnection = require("./configs/mongodb-connection");
 
-app.engine("handlebars", handlebars.engine());
+app.engine(
+  "handlebars",
+  handlebars
+    .create({
+      helpers: require("./configs/handlebars-helpers"),
+    })
+    .engine()
+);
+
 app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
 
@@ -20,8 +32,8 @@ app.get("/write", (req, res) => {
 
 let collection;
 app.listen(3000, async () => {
-  console.log("Server Started");
-  const MongoClient = await mongodbConnection();
-  collection = mongoCient.db().collection("post");
+  console.log("Server started");
+  const mongoClient = await mongodbConnection();
+  collection = mongoClient.db().collection("post");
   console.log("MongoDB connected");
 });
