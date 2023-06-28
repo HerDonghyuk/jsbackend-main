@@ -2,9 +2,6 @@ const express = require("express");
 const handlebars = require("express-handlebars");
 const app = express();
 
-/* app.use(express.json());
-app.use(express.urlencoded({ extended: true })); */
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -12,11 +9,9 @@ const mongodbConnection = require("./configs/mongodb-connection");
 
 app.engine(
   "handlebars",
-  handlebars
-    .create({
-      helpers: require("./configs/handlebars-helpers"),
-    })
-    .engine()
+  handlebars.create({
+    helpers: require("./configs/handlebars-helpers"),
+  }).engine
 );
 
 app.set("view engine", "handlebars");
