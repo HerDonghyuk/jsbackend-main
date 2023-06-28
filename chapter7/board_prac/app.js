@@ -1,11 +1,12 @@
 const express = require("express");
 const handlebars = require("express-handlebars");
 const app = express();
+const mongodbConnection = require("./configs/mongodb-connection");
+/* const postService = require("./services/post-service"); */
+const postService = require("./services/post-service");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-const mongodbConnection = require("./configs/mongodb-connection");
 
 app.engine(
   "handlebars",
@@ -23,6 +24,18 @@ app.get("/", (req, res) => {
 
 app.get("/write", (req, res) => {
   res.render("write", { title: "테스트" });
+});
+
+/* app.post("/write", async (req, res) => {
+  const post = req.body;
+  const result = await postService.writePost(collection, post);
+  res.redirect(`detail/${result.insertedId}`);
+});  */
+
+app.post("/write", async (req, res) => {
+  const post = req.body;
+  const result = await postService.writePost(collection, post);
+  res.redirect(`detail/${result.insertedId}`);
 });
 
 let collection;
