@@ -1,4 +1,14 @@
+// register
+// saveDB `save ${user.name} to DB`
+// sendEmail `email to ${user.email}`
+// getResult `success register ${user.name}`
+
 const DB = [];
+const dher = {
+  email: "andy@test.com",
+  password: "1234",
+  name: "andy",
+};
 
 function register(user) {
   return saveDB(user, function (user) {
@@ -11,24 +21,10 @@ function register(user) {
 function saveDB(user, callback) {
   DB.push(user);
   console.log(`save ${user.name} to DB`);
-  return callback(user);
+  return callback(user, callback);
 }
 
-function sendEmail(user, callback) {
-  console.log(`email to ${user.email}`);
-  return callback(user);
-}
-
-function getResult(user) {
-  return `success register ${user.name}`;
-}
-
-const result = register({
-  email: "andy@test.com",
-  password: "1234",
-  name: "andy",
-});
-console.log(result);
+register(dher);
 
 /* const DB = [];
 
