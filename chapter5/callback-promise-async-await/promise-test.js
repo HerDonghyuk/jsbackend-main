@@ -1,11 +1,17 @@
+/* DB
+saveDB
+sendEmail
+getResult
+registerByPromise */
+
 const DB = [];
 
 function saveDB(user) {
-  const oldDBsize = DB.length + 1;
+  const oldDBSize = DB.length;
   DB.push(user);
   console.log(`save ${user.name} to DB`);
   return new Promise((resolve, reject) => {
-    if (DB.length > oldDBsize) {
+    if (DB.length > oldDBSize) {
       resolve(user);
     } else {
       reject(new Error("Save DB Error!"));
@@ -15,30 +21,27 @@ function saveDB(user) {
 
 function sendEmail(user) {
   console.log(`email to ${user.email}`);
-  return new Promise((resolve) => {
+  return new Promise((resolve, _) => {
     resolve(user);
   });
 }
 
 function getResult(user) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, _) => {
     resolve(`success register ${user.name}`);
   });
 }
 
 function registerByPromise(user) {
-  const result = saveDB(user)
-    .then(sendEmail)
-    .then(getResult)
-    .catch((error) => new Error(error))
-    .finally(() => console.log("완료!!"));
+  const result = saveDB(user).then(sendEmail).then(getResult);
   console.log(result);
   return result;
 }
 
-const myUser = { email: "andy@test.com", password: "1234", name: "andy" };
-const result = registerByPromise(myUser);
-
+const dher = { email: "andy@test.com", password: "1234", name: "andy" };
+/* allResult = Promise.all([saveDB(dher), sendEmail(dher), getResult(dher)]);
+allResult.then(console.log); */
+const result = registerByPromise(dher);
 result.then(console.log);
 
 // allResult = Promise.all([sav */eDB(myUser), sendEmail(myUser), getResult(myUser)]);
