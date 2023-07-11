@@ -6,13 +6,14 @@
 // dher = { email: "andy@test.com", password: "1234", name: "andy" };
 
 const DB = [];
+const dher = { email: "andy@test.com", password: "1234", name: "andy" };
 
 function saveDB(user) {
   let oldDBSize = DB.length;
   DB.push(user);
   console.log(`save ${user.name} to DB`);
   return new Promise((resolve, reject) => {
-    if (DB.length > oldDBSize) {
+    if (oldDBSize < DB.length) {
       resolve(user);
     } else {
       reject(new Error("Save DB Error!"));
@@ -34,28 +35,27 @@ function getResult(user) {
 }
 
 function registerByPromise(user) {
-  const result = saveDB(user)
+  let result = saveDB(user)
     .then(sendEmail)
     .then(getResult)
     .catch(console.log)
-    .finally(() => console.log("완료!"));
-  return new Promise((resolve, reject) => {
-    resolve(result);
-  });
+    .finally(() => {
+      console.log("finish!!");
+    });
+  return result;
 }
 
-const dher = { email: "andy@test.com", password: "1234", name: "andy" };
-/* const result = registerByPromise(dher);
+/* let result = registerByPromise(dher);
 result.then(console.log) */
 
-const allResult = Promise.all([saveDB(dher), sendEmail(dher), getResult(dher)]);
+let allResult = Promise.all([saveDB(dher), sendEmail(dher), getResult(dher)]);
 allResult.then(console.log);
 
 // dher = { email: "andy@test.com", password: "1234", name: "andy" };
 
 /* ======================================== */
 
-// allResult = Promise.all([sav */eDB(myUser), sendEmail(myUser), getResult(myUser)]);
+// allResult = Promise.all([saveDB(myUser), sendEmail(myUser), getResult(myUser)]);
 // allResult.then(console.log);
 
 /* const DB = [];
