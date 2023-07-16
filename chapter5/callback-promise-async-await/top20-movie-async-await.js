@@ -1,12 +1,14 @@
-/* const axios = require("axios");
+const axios = require("axios");
 
 async function getTop20Movies() {
-  const url = "https://raw.githubusercontent.com/wapj/musthavenodejs/main/movieinfo.json";
+  const url =
+    "https://raw.githubusercontent.com/wapj/musthavenodejs/main/movieinfo.json";
   try {
     const result = await axios.get(url);
     const { data } = result;
+
     if (!data.articleList || data.articleList.size == 0) {
-      throw new Error("데이터가 없습니다.");
+      throw new Error("No Data!!");
     }
 
     const movieInfos = data.articleList.map((article, idx) => {
@@ -17,12 +19,14 @@ async function getTop20Movies() {
       console.log(`[${movieInfo.rank}위] ${movieInfo.title}`);
     }
   } catch (err) {
+    console.log("Error Occurred!!");
     throw new Error(err);
   }
 }
 
-getTop20Movies(); */
+getTop20Movies();
 
+/* 
 const axios = require("axios");
 
 async function getTop20Movies() {
@@ -49,3 +53,4 @@ async function getTop20Movies() {
 }
 
 getTop20Movies();
+ */

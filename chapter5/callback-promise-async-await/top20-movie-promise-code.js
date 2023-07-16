@@ -8,18 +8,18 @@ axios
   .get(url)
   .then((result) => {
     if (result.status != 200) {
-      throw new Error("request failure!");
+      throw new Error("Request Failed!");
     }
 
     if (result.data) {
       return result.data;
     }
 
-    throw new Error("No Data");
+    throw new Error("No Data!");
   })
   .then((data) => {
     if (!data.articleList || data.articleList.size == 0) {
-      throw new Error("No Data");
+      throw new Error("No Data!");
     }
     return data.articleList;
   })
@@ -34,7 +34,7 @@ axios
     }
   })
   .catch((err) => {
-    console.log("<<Error Occurred>>");
+    console.log("Error Occurred!");
     console.error(err);
   });
 

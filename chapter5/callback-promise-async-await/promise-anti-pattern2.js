@@ -1,4 +1,4 @@
-function myWork(work) {
+/* function myWork(work) {
   return new Promise((resolve, reject) => {
     resolve(work.toUpperCase());
   });
@@ -13,15 +13,25 @@ function playGame(work) {
     }
   });
 }
-/* 
-myWork('done')
-.then(playGame)
-.then(console.log) */
 
-/* myWork("done").then(function (result) {
-  playGame(result).then(function (val) {
-    console.log(val);
+myWork("done")
+  .then(playGame)
+  .then(console.log) */
+
+function myWork(work) {
+  return new Promise((resolve, _) => {
+    resolve(work.toUpperCase());
   });
-}); */
+}
 
-myWork("done").then(playGame).then(console.log);
+function playGame(work) {
+  return new Promise((resolve, reject) => {
+    if (work === "DONE") {
+      resolve("GO PLAY GAME");
+    } else {
+      reject(new Error("WORK HARDER!!"));
+    }
+  });
+}
+
+myWork("oh yeah").then(playGame).then(console.log);
