@@ -24,4 +24,12 @@ app.get("/", (req, res) => {
   res.render("home", { title: "테스트 게시판", message: "Nice to meet ya" });
 });
 
+app.get("/write", (req, res) => {
+  res.render("write", { title: "테스트 게시판" });
+});
+
+app.get("/detail/:id", (req, res) => {
+  res.render("detail", { title: "테스트 게시판" });
+});
+
 app.listen(3000);
