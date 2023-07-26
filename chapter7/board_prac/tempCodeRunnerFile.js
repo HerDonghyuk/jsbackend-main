@@ -28,7 +28,7 @@ app.get("/write", (req, res) => {
   res.render("write", { title: "테스트 게시판" });
 });
 
-app.get("/detail/:id", (req, res) => {
+app.get("/detail", (req, res) => {
   res.render("detail", { title: "테스트 게시판" });
 });
 
