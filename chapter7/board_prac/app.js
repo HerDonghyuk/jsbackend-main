@@ -36,8 +36,12 @@ app.get("/", (req, res) => {
   res.render("home", { title: "테스트 게시판", message: "Nice to meet ya" });
 });
 
+app.get("/write", (req, res) => {
+  res.render("write", { title: "테스트 게시판" });
+});
+
 app.post("/write", async (req, res) => {
-  const post = req.body;
+  const post = res.body;
   const result = await postService.writePost(collection, post);
   res.redirect(`/detail/${result.insertedId}`);
 });
