@@ -20,7 +20,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const postService = require("./services/post-service");
-
 const mongodbConnection = require("./configs/mongodb-connection");
 
 app.engine(
@@ -41,7 +40,7 @@ app.get("/write", (req, res) => {
 });
 
 app.post("/write", async (req, res) => {
-  const post = res.body;
+  const post = req.body;
   const result = await postService.writePost(collection, post);
   res.redirect(`/detail/${result.insertedId}`);
 });

@@ -20,7 +20,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const postService = require("./services/post-service");
-
 const mongodbConnection = require("./configs/mongodb-connection");
 
 app.engine(
@@ -34,6 +33,10 @@ app.set("views", __dirname + "/views");
 
 app.get("/", (req, res) => {
   res.render("home", { title: "테스트 게시판", message: "Nice to meet ya" });
+});
+
+app.get("/write", (req, res) => {
+  res.render("write", { title: "테스트 게시판" });
 });
 
 app.post("/write", async (req, res) => {
