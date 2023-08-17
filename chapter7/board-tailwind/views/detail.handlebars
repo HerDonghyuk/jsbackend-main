@@ -22,13 +22,21 @@
           | 작성일시 :
           {{dateString createdDt}}
 
-          <button class="btn btn-xs btn-primary" onclick="modifyPost()">수정</button>
-          <button class="btn btn-xs btn-warning" onclick="deletePost()">삭제</button>
+          <button
+            class="btn btn-xs btn-primary"
+            onclick="modifyPost()"
+          >수정</button>
+          <button
+            class="btn btn-xs btn-warning"
+            onclick="deletePost()"
+          >삭제</button>
         </div>
       </div>
 
       <div class="py-6">
-        <pre class="overflow-scroll whitespace-pre-wrap p-3 border-2 border-gray-200 h-96">{{content}}</pre>
+        <pre
+          class="overflow-scroll whitespace-pre-wrap p-3 border-2 border-gray-200 h-96"
+        >{{content}}</pre>
       </div>
     </main>
     <section>
@@ -40,8 +48,18 @@
         <input type="hidden" name="id" value="{{_id}}" />
         <div class="mb-10">
           <div class="mb-5">
-            <input type="text" name="name" class="input input-sm input-bordered" placeholder="이름" />
-            <input type="password" name="password" class="input input-sm input-bordered" placeholder="비밀번호" />
+            <input
+              type="text"
+              name="name"
+              class="input input-sm input-bordered"
+              placeholder="이름"
+            />
+            <input
+              type="password"
+              name="password"
+              class="input input-sm input-bordered"
+              placeholder="비밀번호"
+            />
           </div>
           <div class="space-y-3">
             <textarea
@@ -70,7 +88,10 @@
                 작성일시 :
                 {{dateString createdDt}}
 
-                <button class="btn btn-xs btn-warning" onclick="deleteComment('{{idx}}')">삭제</button>
+                <button
+                  class="btn btn-xs btn-warning"
+                  onclick="deleteComment('{{idx}}')"
+                >삭제</button>
               </div>
             </div>
           </div>
