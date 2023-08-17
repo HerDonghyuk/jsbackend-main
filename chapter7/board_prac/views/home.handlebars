@@ -13,7 +13,7 @@
 
 <a href="/write">글쓰기</a>
 <br />
-
+{{!-- prettier-ignore --}}
 <div>
   <table>
     <thead>
@@ -25,17 +25,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><a href="/detail">시험삼아</a></td>
-        <td>김개똥</td>
-        <td>999</td>
-        <td>2022-12-25</td>
-      </tr>
+      {{!-- {{each posts}} --}}
+        <tr>
+          {{!-- <td><a href="/detail/{{_id}}">{{title}}</a></td>
+          <td>{{writer}}</td>
+          <td>{{hits}}</td>
+          <td>{{dateString createdDt}}</td> --}}
+        </tr>
+      {{!-- {{/each}} --}}
     </tbody>
   </table>
 </div>
 
 <div>
+  {{!-- {{#with paginator}} --}}
   <a>&lt;&lt;</a>
   <a>&lt;</a>
   <a>1</a>
@@ -45,6 +48,7 @@
   <a>5</a>
   <a>&gt;</a>
   <a>&gt;&gt;</a>
+  {{!-- {{/with}} --}}
 </div>
 
 {{!-- <h1>{{title}}</h1>
