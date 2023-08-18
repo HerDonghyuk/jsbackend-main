@@ -19,6 +19,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+/* app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+ */
+
+/* const postService = require("./services/post-service"); */
+
 const postService = require("./services/post-service");
 const mongodbConnection = require("./configs/mongodb-connection");
 
@@ -31,8 +37,16 @@ app.engine(
 app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
 
-app.get("/", (req, res) => {
-  res.render("home", { title: "테스트 게시판", message: "Nice to meet ya" });
+app.get("/", async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const search = req.query.search || "";
+  try {
+    const [posts, paginator] = await postService.list(collection, post, search);
+    res.render("home", { title: "테스트 게시판", search, page, search });
+  } catch (error) {
+    console.error(error);
+    res.render("home", { title: "테스트 게시판" });
+  }
 });
 
 app.get("/write", (req, res) => {
