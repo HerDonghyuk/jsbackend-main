@@ -42,7 +42,7 @@
   {{#with paginator}}
     <a href="/?page=1?search={{@root.search}}">&lt;&lt;</a>
     {{#if hasPrev}}
-      <a href="/?page={{prevPage}}@search{{@root.search}}">&lt;</a>
+      <a href="/?page={{prevPage}}&search{{@root.search}}">&lt;</a>
     {{else}}
       <a>&lt;</a>
     {{/if}}
@@ -58,6 +58,6 @@
     {{else}}
       <a>&gt;</a>
     {{/if}}
-    <a href="/?page={{lastPage}}?search={{@root.search}}">&gt;&gt;</a>
+    <a href="/?page={{lastPage}}&search={{@root.search}}">&gt;&gt;</a>
   {{/with}}
 </div>
