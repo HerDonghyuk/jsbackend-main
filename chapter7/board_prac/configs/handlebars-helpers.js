@@ -1,6 +1,6 @@
 /* module.exports = {
   lengthOfLists: (list = []) => list.length,
-  eq: (val, val2) => val1 === val2,
+  eq: (val1, val2) => val1 === val2,
   dateString: (isoString) => new Date(isoString).toLocaleDateString(),
 };
  */
