@@ -28,6 +28,13 @@ app.use(express.urlencoded({ extended: true }));
 const postService = require("./services/post-service");
 const mongodbConnection = require("./configs/mongodb-connection");
 
+/* app.engine(
+  "handlebars",
+  handlebars.create({
+    helpers: require("./configs/handlebars-helpers"),
+  }).engine
+); */
+
 app.engine(
   "handlebars",
   handlebars.create({
