@@ -59,12 +59,6 @@ app.post("/write", async (req, res) => {
   res.redirect(`/detail/${result.insertedId}`);
 });
 
-/* app.post("/write", async (req, res) => {
-  const post = req.body;
-  const result = await postService.writePost(collection, post);
-  res.redirect(`/detail/${result.insertedId}`);
-}); */
-
 app.get("/detail/:id", (req, res) => {
   res.render("detail", { title: "테스트 게시판" });
 });
