@@ -301,7 +301,7 @@ app.post("/write-comment", async (req, res) => {
     ];
   }
 
-  app.delete("/write-commnet", async (req, res) => {
+  app.delete("/write-comment", async (req, res) => {
     const { id, idx, password } = req.body;
 
     const post = await collection.findOne(
