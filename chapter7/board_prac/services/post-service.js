@@ -6,7 +6,7 @@ async function writePost(collection, post) {
   return await collection.insertOne(post);
 }
 
-async function list(collection, page, search) {
+/* async function list(collection, page, search) {
   const perPage = 10;
   const query = { title: new RegExp(search, "i") };
   const cursor = collection
@@ -18,6 +18,11 @@ async function list(collection, page, search) {
   const posts = await cursor.toArray();
   const paginatorObj = paginator({ totalCount, page, perPage: perPage });
   return [posts, paginatorObj];
+} */
+
+async function list(collection, page, search) {
+  const perPage = 10;
+  const query = { title: new RegExp(search, "i") };
 }
 
 module.exports = {
