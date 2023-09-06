@@ -1,3 +1,5 @@
+/* const paginator = require("../utils/paginator"); */
+
 const paginator = require("../utils/paginator");
 
 async function writePost(collection, post) {
@@ -9,6 +11,13 @@ async function writePost(collection, post) {
 async function list(collection, page, search) {
   const perPage = 10;
   const query = { title: new RegExp(search, "i") };
+  const cursor = 
+}
+
+
+/* async function list(collection, page, search) {
+  const perPage = 10;
+  const query = { title: new RegExp(search, "i") };
   const cursor = collection
     .find(query, { limit: perPage, skip: (page - 1) * perPage })
     .sort({
@@ -18,9 +27,10 @@ async function list(collection, page, search) {
   const posts = await cursor.toArray();
   const paginatorObj = paginator({ totalCount, page, perPage: perPage });
   return [posts, paginatorObj];
-}
+} */
 
 module.exports = {
   list,
   writePost,
 };
+
