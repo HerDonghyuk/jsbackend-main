@@ -2,10 +2,9 @@ const lodash = require("lodash");
 const PAGE_LIST_SIZE = 10;
 
 module.exports = ({ totalCount, page, perPage = 10 }) => {
-  const PER_PAGE = perPAGE;
-  const totalPage = Math.ceil(totalCount / PER_PAGE);
+  const totalPage = Math.ceil(totalCount / perPage);
 
-  let quotient = pareInt(page / PAGE_LIST_SIZE);
+  let quotient = parseInt(page / PAGE_LIST_SIZE);
   if (page % PAGE_LIST_SIZE === 0) {
     quotient -= 1;
   }
