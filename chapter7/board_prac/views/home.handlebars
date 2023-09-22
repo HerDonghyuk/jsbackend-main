@@ -11,7 +11,9 @@
 {{! <button
   onclick="location.href=`/?search=${document.getElementById('search').value}`"
 >검색</button> }}
-<button onclick="location.href=`/?search=${document.getElementById('search').value}`">검색</button>
+<button
+  onclick="location.href=`/?search=${document.getElementById('search').value}`"
+>검색</button>
 <br />
 
 <a href="/write">글쓰기</a>
@@ -63,7 +65,7 @@
       {{/if}}
     {{/each}}
     {{#if hasNext}}
-      <a href="/?page={{nextPage}}&search={{root.search}}">&gt;</a>
+      <a href="/?page={{nextPage}}&search={{@root.search}}">&gt;</a>
     {{else}}
       <a>&gt;</a>
     {{/if}}
@@ -79,12 +81,12 @@
     {{#each pageList}}
       {{#if (eq this @root.paginator.page)}}
         <a>{{this}}</a>
-      {{else}}
         <a href="/?page={{this}}&search={{@root.search}}">{{this}}</a>
+      {{else}}
       {{/if}}
     {{/each}}
     {{#if hasNext}}
-      <a href="/?page={{NextPage}}&search={{@root.search}}">&gt;</a>
+      <a href="/?page={{nextPage}}&search={{@root.search}}">&gt;</a>
     {{else}}
       <a>&gt;</a>
     {{/if}}
